@@ -4,20 +4,15 @@ document.addEventListener('DOMContentLoaded', function () {
     
     inputs.forEach(input => {
         input.addEventListener('change', function () {
-            // Remove active class from all boxes
             boxes.forEach(box => box.classList.remove('active'));
 
-            // Add active class to the selected box
             const selectedBox = input.closest('.box');
             selectedBox.classList.add('active');
 
-            // Get the box content element
             const boxContent = selectedBox.querySelector('.box-content');
 
-            // Clear previous content
             boxContent.innerHTML = '';
 
-            // Determine the number of units based on the selected box (1, 2, or 3)
             let numberOfUnits;
             if (input.id === 'unit1') {
                 numberOfUnits = 1;
@@ -27,7 +22,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 numberOfUnits = 3;
             }
 
-            // Dynamically create rows for each unit
             for (let i = 1; i <= numberOfUnits; i++) {
                 const row = document.createElement('div');
                 row.classList.add('options');
@@ -59,7 +53,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 row.appendChild(colorLabel);
                 row.appendChild(colorSelect);
 
-                // Append the row to the box content
                 boxContent.appendChild(row);
             }
         });
