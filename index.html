@@ -8,16 +8,28 @@
 </head>
 <body>
     <div class="container">
-        <h1 class="title">YAY! It’s BOGO</h1>
-    
+        <!-- Title Section with horizontal lines -->
+        <!-- Horizontal lines before and after title -->
+         <div class="text-line">
+            <hr class="line">
+           <h1 class="title">YAY! It’s BOGO</h1>
+           <hr class="line">
+
+         </div>
+        
+        
+
         <!-- Box 1 -->
         <div class="box" id="box1">
-            <input type="radio" name="unit" id="unit1">
             <label for="unit1">
                 <div class="box-header">
+                    <input type="radio" name="unit" id="unit1">
                     <div class="box-info">
-                        <span>1 Unit</span>
-                        <span class="discount">10% Off</span>
+                        <div>
+                            <span class="unit-label">1 Unit</span>
+                            <span class="discount">10% Off</span>
+                        </div>
+                        <p class="price-label">Standard Price</p>
                     </div>
                     <div class="box-price">
                         <span class="discounted-price">$10.00 USD</span>
@@ -27,16 +39,17 @@
             </label>
             <div class="box-content" id="content1"></div>
         </div>
-    
-        <!-- Box 2 (Most Popular) -->
+
+        <!-- Box 2 {Most popular}-->
         <div class="box" id="box2">
-            <input type="radio" name="unit" id="unit2">
             <label for="unit2">
                 <div class="box-header">
+                    <input type="radio" name="unit" id="unit2">
                     <div class="box-info">
-                        <span>2 Unit</span>
-                        <span class="discount">20% Off</span>
-                        <span class="most-popular">Most Popular</span>
+                        <div>
+                            <span class="unit-label">2 Unit</span>
+                            <span class="discount">20% Off</span>
+                        </div>
                     </div>
                     <div class="box-price">
                         <span class="discounted-price">$18.00 USD</span>
@@ -46,15 +59,17 @@
             </label>
             <div class="box-content" id="content2"></div>
         </div>
-    
-        <!-- Box 3 -->
+
+         <!-- Box 3 -->
         <div class="box" id="box3">
-            <input type="radio" name="unit" id="unit3">
             <label for="unit3">
                 <div class="box-header">
+                    <input type="radio" name="unit" id="unit3">
                     <div class="box-info">
-                        <span>3 Unit</span>
-                        <span class="discount">30% Off</span>
+                        <div>
+                            <span class="unit-label">3 Unit</span>
+                            <span class="discount">30% Off</span>
+                        </div>
                     </div>
                     <div class="box-price">
                         <span class="discounted-price">$24.00 USD</span>
@@ -64,13 +79,20 @@
             </label>
             <div class="box-content" id="content3"></div>
         </div>
-    
+
         <div class="footer">
+            <div class="order-summary">
+                <span class="free-delivery">Free Delivery</span>
+                <span class="total-price">Total: $18.00 USD</span>
+            </div>
             <button class="add-to-cart">Add to Cart</button>
         </div>
+
+       
+        <!-- Powered by Pumper Text -->
+        <p class="powered-by"> @ Powered by Pumper</p>
     </div>
     
   <script src="script.js"></script>
 </body>
 </html>
-
