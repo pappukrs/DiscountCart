@@ -5,12 +5,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const box2 = document.getElementById('box2');
     const addToCartButton = document.querySelector('.add-to-cart');
 
-    // Create the badge element
     const badge = document.createElement('span');
     badge.classList.add('badge');
     badge.textContent = 'Most Popular';
 
-    // Function to update the total price
     function updateTotalPrice(selectedUnit) {
         let totalPrice;
         if (selectedUnit === 'unit1') {
@@ -23,15 +21,12 @@ document.addEventListener('DOMContentLoaded', function () {
         totalPriceElement.textContent = `Total: ${totalPrice}`;
     }
 
-    // Function to update badge visibility
     function updateBadge() {
         if (document.getElementById('unit2').checked) {
-            // Add badge to Box 2 if it's selected
             if (!box2.contains(badge)) {
                 box2.appendChild(badge);
             }
         } else {
-            // Remove badge if Box 2 is not selected
             if (box2.contains(badge)) {
                 box2.removeChild(badge);
             }
@@ -40,20 +35,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     inputs.forEach(input => {
         input.addEventListener('change', function () {
-            // Remove active class from all boxes
             boxes.forEach(box => box.classList.remove('active'));
 
-            // Add active class to the selected box
             const selectedBox = input.closest('.box');
             selectedBox.classList.add('active');
 
-            // Get the box content element
             const boxContent = selectedBox.querySelector('.box-content');
-
-            // Clear previous content
             boxContent.innerHTML = '';
 
-            // Determine the number of units based on the selected box (1, 2, or 3)
             let numberOfUnits;
             if (input.id === 'unit1') {
                 numberOfUnits = 1;
@@ -63,7 +52,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 numberOfUnits = 3;
             }
 
-            // Dynamically create rows for each unit
             for (let i = 1; i <= numberOfUnits; i++) {
                 const row = document.createElement('div');
                 row.classList.add('options');
@@ -95,19 +83,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 row.appendChild(colorLabel);
                 row.appendChild(colorSelect);
 
-                // Append the row to the box content
                 boxContent.appendChild(row);
             }
 
-            // Update total price based on the selected unit
             updateTotalPrice(input.id);
-
-            // Update the badge visibility based on the selected unit
             updateBadge();
         });
     });
 
-    // Show alert when the 'Add to Cart' button is clicked
     addToCartButton.addEventListener('click', function () {
         const selectedInput = document.querySelector('input[name="unit"]:checked');
         if (selectedInput) {
@@ -117,6 +100,5 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Initial update
     updateBadge();
 });
