@@ -1,23 +1,48 @@
 document.addEventListener('DOMContentLoaded', function () {
     const boxes = document.querySelectorAll('.box');
     const inputs = document.querySelectorAll('input[name="unit"]');
-    
+    const totalPriceElement = document.querySelector('.total-price');
+    const box2 = document.getElementById('box2');
+    const addToCartButton = document.querySelector('.add-to-cart');
+
+    const badge = document.createElement('span');
+    badge.classList.add('badge');
+    badge.textContent = 'Most Popular';
+
+    function updateTotalPrice(selectedUnit) {
+        let totalPrice;
+        if (selectedUnit === 'unit1') {
+            totalPrice = "$10.00 USD";
+        } else if (selectedUnit === 'unit2') {
+            totalPrice = "$18.00 USD";
+        } else if (selectedUnit === 'unit3') {
+            totalPrice = "$24.00 USD";
+        }
+        totalPriceElement.textContent = `Total: ${totalPrice}`;
+    }
+
+    function updateBadge() {
+        if (document.getElementById('unit2').checked) {
+            if (!box2.contains(badge)) {
+                box2.appendChild(badge);
+            }
+        } else {
+            if (box2.contains(badge)) {
+                box2.removeChild(badge);
+            }
+        }
+    }
+
     inputs.forEach(input => {
         input.addEventListener('change', function () {
-            // Remove active class from all boxes
             boxes.forEach(box => box.classList.remove('active'));
 
-            // Add active class to the selected box
             const selectedBox = input.closest('.box');
             selectedBox.classList.add('active');
 
-            // Get the box content element
             const boxContent = selectedBox.querySelector('.box-content');
-
-            // Clear previous content
             boxContent.innerHTML = '';
 
-            // Determine the number of units based on the selected box (1, 2, or 3)
             let numberOfUnits;
             if (input.id === 'unit1') {
                 numberOfUnits = 1;
@@ -27,13 +52,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 numberOfUnits = 3;
             }
 
-            // Dynamically create rows for each unit
             for (let i = 1; i <= numberOfUnits; i++) {
                 const row = document.createElement('div');
                 row.classList.add('options');
 
                 const sizeLabel = document.createElement('label');
-                sizeLabel.textContent = `Size #${i}`;
+                sizeLabel.textContent = `#${i}`;
                 const sizeSelect = document.createElement('select');
                 const sizes = ['S', 'M', 'L'];
                 sizes.forEach(size => {
@@ -59,9 +83,22 @@ document.addEventListener('DOMContentLoaded', function () {
                 row.appendChild(colorLabel);
                 row.appendChild(colorSelect);
 
-                // Append the row to the box content
                 boxContent.appendChild(row);
             }
+
+            updateTotalPrice(input.id);
+            updateBadge();
         });
     });
+
+    addToCartButton.addEventListener('click', function () {
+        const selectedInput = document.querySelector('input[name="unit"]:checked');
+        if (selectedInput) {
+            alert('Beautiful! Items added to cart.');
+        } else {
+            alert('Please select an item before adding to cart.');
+        }
+    });
+
+    updateBadge();
 });

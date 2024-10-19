@@ -2,115 +2,106 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
-  
-  body {
+}
+
+body {
     font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     background-color: #f8f9fa;
-  }
-  
-  .container {
+}
+
+.container {
     width: 90%;
     max-width: 400px;
     background-color: white;
     border: 1px solid #e0e0e0;
     padding: 20px;
     border-radius: 8px;
-  }
-  
-  .title {
+    position: relative;
+}
+
+.text-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.text-line .line {
+    flex: 1;
+    border: none;
+    height: 1px;
+    background-color: #e0e0e0;
+}
+
+.title {
+    margin: 0 10px;
     text-align: center;
     color: #ff007a;
-    margin-bottom: 20px;
-  }
-  
-  .box {
+    font-size: 1.5rem;
+}
+
+.box {
     border: 1px solid #e0e0e0;
-    margin-bottom: 20px;
     border-radius: 8px;
     transition: all 0.3s;
-  }
-  
-  .box-header {
+    padding: 10px;
+    max-width: 400px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.box-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
+    gap: 10px; 
+}
+
+.box-header label {
+    display: flex;
+    align-items: center; 
     cursor: pointer;
-    background-color: #fff;
-  }
-  
-  .box-info {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .discount {
-    font-size: 0.8rem;
-    color: #ff007a;
-    margin-top: 5px;
-  }
-  
-  .box-price {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-  }
-  
-  .discounted-price {
-    font-weight: bold;
-    color: #000;
-  }
-  
-  .old-price {
-    text-decoration: line-through;
-    color: gray;
-  }
-  
-  .most-popular {
+}
+
+.most-popular {
     background-color: #ff007a;
     color: white;
     padding: 2px 6px;
     border-radius: 4px;
     font-size: 0.9rem;
     margin-top: 5px;
-  }
-  
-  .box-content {
+}
+
+.box-content {
     display: none;
     padding: 10px;
-  }
-  
-  .box.active .box-content {
+}
+
+.box.active .box-content {
     display: block;
-  }
-  
-  .options {
+}
+
+.options {
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
-  }
-  
-  .options label {
+}
+
+.options label {
     margin-right: 10px;
-  }
-  
-  select {
+}
+
+select {
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
-  }
-  
-  .footer {
-    text-align: center;
-    margin-top: 20px;
-  }
-  
-  .add-to-cart {
+}
+
+.add-to-cart {
     background-color: #ff007a;
     color: white;
     border: none;
@@ -118,9 +109,120 @@
     border-radius: 4px;
     cursor: pointer;
     font-size: 1rem;
-  }
-  
-  .add-to-cart:hover {
-    background-color: #e0006c;
-  }
-  
+}
+
+.unit-label {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+input[type="radio"] {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+}
+
+input[type="radio"]:checked {
+    background-color: #ff4b5c;
+    border-color: #ff4b5c;
+}
+
+.box-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1;
+}
+
+.discount {
+    font-size: 0.75rem;
+    background-color: #ff007a;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-top: 4px;
+}
+
+.price-label {
+    font-size: 0.8rem;
+    color: black;
+    margin-top: 4px;
+}
+
+.box-price {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.discounted-price {
+    font-weight: bold;
+    color: #000;
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: gray;
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.order-summary {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 20px;
+    margin-bottom: 10px;
+}
+
+.free-delivery {
+    color: #ff4d4d;
+    font-weight: bold;
+}
+
+.total-price {
+    color: #333;
+    font-weight: bold;
+}
+
+/* Badge Styling */
+.badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #ff6666;
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 5px;
+    transform: rotate(-0deg);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.box {
+    position: relative;
+    padding-top: 20px;
+}
+
+.box.active {
+    border: 2px solid #ff4b5c;
+    background-color: #ffe6e6;
+}
+
+
+.powered-by {
+    text-align: right;
+    font-size: 12px;
+    color: #999;
+    margin-top: 10px;
+}
